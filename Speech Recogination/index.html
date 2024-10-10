@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech Regognition</title>
+</head>
+<body>
+    <style>
+        body {
+  background-color: darkslateblue;
+  margin: 0;
+  padding: 0;
+}
+
+.list {
+  font-size: 1.5rem;
+  list-style: none;
+  margin: 1em auto;
+  padding: 1em;
+  background-color: white;
+  width: 600px;
+  box-shadow: 0 0 5px rgba(0,0,0,.25)
+}
+
+.list:empty::before {
+  content: 'Speech recognition results appear here...';
+  color: darkgray;
+  font-size: 1.2em;
+  animation: flash 3s infinite alternate ease-in-out;
+}
+
+.list__item {
+  padding: .5em .3em;
+  border-bottom: 1px solid darkgray;
+}
+
+.list__item:last-child {
+  border: none;
+}
+
+.list__item:empty::before {
+  content: '•••';
+  color: darkgray;
+  animation: flash 1s alternate infinite ease-in-out;
+}
+
+@keyframes flash {
+  0% {
+    opacity: .3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+    </style>
+    <ul class="list"></ul>
+    <script>
+        const list = document.querySelector('.list')
+const addLi = () => {
+  const li = document.createElement('li')
+  li.className = "list__item"
+  list.appendChild(li)
+  return li;
+}
+const setLiText = (li, text) => {
+  li.innerHTML = li.innerHTML = text;
+}
+
+let SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+
+if(!SpeechRecognition) {
+  throw new Error("API not supported!")
+}
+
+const sr = new SpeechRecognition()
+
+let li, gotResult;
+sr.addEventListener('speechstart', e => {
+  li = addLi();
+})
+
+sr.addEventListener('result', e => {
+  const transcript = Array.from(e.results)
+    .map(r => r[0])
+    .map(r => r.transcript)
+    .join(' ')
+  
+  setLiText(li, transcript);
+  gotResult = true;
+})
+
+sr.addEventListener('end', () => {
+  if(gotResult === false && li) {
+    li.remove();
+  }
+  sr.start()
+  gotResult = false;
+  li = null;
+})
+sr.start()
+    </script>
+</body>
+</html>

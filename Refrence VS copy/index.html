@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reference VS Copy</title>
+</head>
+<body>
+    <script>
+        // let age = 100;
+        // let age2 = age;
+        // console.table(age, age2)
+
+        // age = 200;
+        // console.table(age, age2)
+
+        // let name = 'Huzaifa';
+        // let name2 = name;
+        // console.table(name, name2)
+
+        // name = 'Hassan';
+        // console.table(name, name2)
+
+
+      const players = ['Hassan', 'Huzaifa', 'Hunain', 'Hamdan' ]
+
+      const team = players;
+
+      console.log( players, team)
+
+      team[2] = 'lux'
+ 
+      console.log( players, team)
+
+
+      const team2 = players.slice();
+
+
+      const team3 = [].concat(players);
+ 
+      const team4 = [...players];
+      team4[3] = 'heee hauuu'
+      console.log(team4)
+
+
+      const team5 = Array.from(players)
+    
+
+      const person = {
+        name: 'Hassan',
+        age: 20,
+      }
+
+      const captain = person;
+      captain.number = 99;
+
+      const cap2 = Object.assign({}, person, {number: 99, age: 12})
+      console.log(cap2)
+
+      const cap3 = [...players];
+
+
+    </script>
+</body>
+</html>

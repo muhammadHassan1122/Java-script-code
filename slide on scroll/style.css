@@ -1,0 +1,134 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  html,
+  body {
+    width: 100%;
+    background-color: rgb(22, 21, 21);
+    margin: 0;
+  }
+  
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto Condensed', sans-serif;
+    margin: 0 auto;
+    padding: 20px 40px;
+    color: rgb(243, 236, 236);
+    font-weight: 300;
+    font-size: 1.1em;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .container__title {
+    font-size: 7.25em;
+    color: #f4c0d7;
+    text-transform: uppercase;
+    width: 100%;
+    padding: 20px 0;
+    margin: 0;
+  }
+  
+  .container__subtitle {
+    border-bottom: 2px solid white;
+    font-size: 1.25em;
+    width: 100%;
+    font-weight: 300;
+    line-height: 1.25em;
+    color: #f4c0d7;
+    padding: 10px 0 20px;
+    margin: 0;
+  }
+  
+  .container__subtitle__link {
+    color: #f4c0d7;
+    font-weight: 900;
+    font-style: italic;
+    text-decoration: none;
+  }
+  
+  .container__block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  @media (min-width: 900px) {
+    .container__block {
+      flex-direction: row;
+    }
+  }
+  
+  .container__section {
+    width: 100%;
+  }
+  
+  @media (min-width: 900px) {
+    .container__section {
+      width: 40%;
+    }
+  }
+  
+  .slide-in {
+    object-fit: cover;
+    margin-bottom: 10px;
+    margin: 0;
+    transition: all 1s ease-in-out;
+  }
+  
+  @media (min-width: 900px) {
+    .slide-in {
+      width: 60%;
+    }
+  }
+  
+  .block-reverse {
+    flex-direction: column-reverse;
+  }
+  
+  @media (min-width: 900px) {
+    .block-reverse {
+      flex-direction: row;
+    }
+  }
+  
+  @media (min-width: 900px) {
+    .align-left {
+      margin-right: 20px;
+    }
+  }
+  
+  @media (min-width: 900px) {
+    .align-right {
+      margin-left: 20px;
+    }
+  }
+  
+  .slide-in--hide {
+    margin: 0;
+    width: 0%;
+  }
+  
+  .slide-in--active {
+    width: 100%;
+    transform: translateX(0%) scale(1);
+  }
+  
+  @media (min-width: 900px) {
+    .slide-in--active {
+      width: 60%;
+    }
+  }
+  
+  .container__section--growing {
+    width: 100%;
+  }
+  
